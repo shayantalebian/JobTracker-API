@@ -62,42 +62,48 @@ JobTrackr-API/
 ├── Dockerfile           # Container blueprint for the FastAPI app
 ├── requirements.txt     # Locked dependencies via uv
 └── README.md            # Project documentation
-
+```
 
 ## 🛠️ Local Setup & Installation
 
 This project utilizes [uv](https://github.com/astral-sh/uv) for lightning-fast Python package management.
 
 **1. Clone the repository**
-bash
+
+```bash
 git clone https://github.com/YOUR-USERNAME/JobTracker-API.git
 cd JobTracker-API
+```
 
 **2. Initialize the virtual environment**
-bash
+
+```bash
 uv venv --python 3.12
 source .venv/bin/activate  # macOS/Linux
+```
 
 **3. Install dependencies**
-bash
+
+```bash
 uv pip install -r requirements.txt
+```
 
 **4. Run with Docker (Database + App)**
-*(Detailed Docker instructions will be added as Phase 1 progresses)*
-bash
+_(Detailed Docker instructions will be added as Phase 1 progresses)_
+
+```bash
 docker-compose up --build
+```
 
 ## 👨‍💻 Author
 
 **Shayan Talebian**
-*   Python Backend Developer & Aspiring AI/ML Engineer
-*   [GitHub](https://github.com/YOUR-USERNAME) | [LinkedIn](https://linkedin.com/in/YOUR-LINKEDIN)
+
+- Python Backend Developer & Aspiring AI/ML Engineer
+- [GitHub](https://github.com/YOUR-USERNAME) | [LinkedIn](https://linkedin.com/in/YOUR-LINKEDIN)
 
 ---
+
 <div align="center">
   <i>Engineered with precision and AI-Augmented Development methodologies.</i>
 </div>
-`
-
-Is the copy block working perfectly in your UI now? Please verify it in VSCode (using `Cmd + Shift + V` for the preview), and let me know if you want to modify any specific details inside it before we run our `git commit`!
-```
