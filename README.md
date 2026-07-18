@@ -46,18 +46,23 @@ Developed with a strong focus on clean architecture, modern Python practices, an
 ```text
 JobTrackr-API/
 ├── app/
-│   ├── api/             # Route handlers (Endpoints)
-│   ├── core/            # App configurations, database connections
+│   ├── api/             # Route handlers & endpoints (e.g., v1, dependencies.py)
+│   ├── core/            # App configurations (config.py, database.py)
 │   ├── models/          # SQLAlchemy database models
-│   ├── schemas/         # Pydantic models (Data validation)
-│   ├── services/        # Business logic
+│   ├── repositories/    # Data Access Layer (Database CRUD operations)
+│   ├── schemas/         # Pydantic models (Data validation & serialization)
+│   ├── services/        # Business Logic Layer
+│   ├── utils/           # Shared utility functions and helpers
 │   └── main.py          # FastAPI application instance
+├── tests/               # Unit and integration tests (pytest)
 ├── docs/                # Architecture, roadmap, and guidelines
 ├── alembic/             # Database migration scripts
 ├── .env                 # Environment variables (Ignored by Git)
 ├── docker-compose.yml   # Multi-container orchestration
+├── Dockerfile           # Container blueprint for the FastAPI app
 ├── requirements.txt     # Locked dependencies via uv
-└── README.md            # You are here
+└── README.md            # Project documentation
+
 
 ## 🛠️ Local Setup & Installation
 

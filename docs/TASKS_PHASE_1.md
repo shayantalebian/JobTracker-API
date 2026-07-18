@@ -6,6 +6,7 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 1 — Project Foundation
 
+- [✅] **Task 1.0:** Initialize advanced directory skeleton (api, core, models, repositories, schemas, services, utils, tests)
 - [✅] **Task 1.1:** Create the project structure (`app/`, `docs/`, `alembic/`, etc.).
 - [✅] **Task 1.2:** Initialize Git repository and create `.gitignore`.
 - [✅] **Task 1.3:** Create `README.md`, `ROADMAP.md`, `PHASES.md`, and `SYSTEM_DESIGN.md`.
