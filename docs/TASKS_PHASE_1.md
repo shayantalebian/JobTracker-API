@@ -30,21 +30,21 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 3 — Configuration
 
-- [ ] **Task 3.1:** Create `app/core/config.py` using Pydantic Settings.
-- [ ] **Task 3.2:** Load all environment variables securely.
-- [ ] **Task 3.3:** Create `app/core/database.py`.
-- [ ] **Task 3.4:** Configure SQLAlchemy Engine.
-- [ ] **Task 3.5:** Configure SessionLocal.
-- [ ] **Task 3.6:** Create Declarative Base.
+- [✅] **Task 3.1:** Create `app/core/config.py` using Pydantic Settings.
+- [✅] **Task 3.2:** Load all environment variables securely.
+- [✅] **Task 3.3:** Create `app/core/database.py`.
+- [✅] **Task 3.4:** Configure SQLAlchemy Engine.
+- [✅] **Task 3.5:** Configure SessionLocal.
+- [✅] **Task 3.6:** Create Declarative Base.
 
 ---
 
 ## Stage 4 — Alembic
 
-- [ ] **Task 4.1:** Initialize Alembic.
-- [ ] **Task 4.2:** Configure Alembic to use `.env`.
-- [ ] **Task 4.3:** Connect Alembic to SQLAlchemy metadata.
-- [ ] **Task 4.4:** Verify migrations work correctly.
+- [✅] **Task 4.1:** Initialize Alembic.
+- [✅] **Task 4.2:** Configure Alembic to use `.env`.
+- [✅] **Task 4.3:** Connect Alembic to SQLAlchemy metadata.
+- [✅] **Task 4.4:** Verify migrations work correctly.
 
 ---
 

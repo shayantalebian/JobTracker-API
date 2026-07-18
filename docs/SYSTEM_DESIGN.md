@@ -14,9 +14,9 @@ Our folder structure strictly adheres to the 3-Tier Architecture for maximum mod
 
 JobTrackr API follows a standard 3-tier architecture containerized for local development:
 
-1.  **Presentation/Routing Layer:** FastAPI endpoints routing HTTP requests and handling OpenAPI (Swagger) documentation.
-2.  **Business Logic Layer:** Python services validating data (Pydantic) and interacting with the ORM.
-3.  **Data Access Layer:** SQLAlchemy ORM communicating with the PostgreSQL database.
+1. **Presentation/Routing Layer:** FastAPI endpoints routing HTTP requests and handling OpenAPI (Swagger) documentation.
+2. **Business Logic Layer:** Python services validating data (Pydantic) and interacting with the ORM.
+3. **Data Access Layer:** SQLAlchemy ORM communicating with the PostgreSQL database.
 
 ## Database Schema (ERD Overview)
 
