@@ -1,0 +1,30 @@
+services:
+  api:
+    build: .
+    container_name: jobtracker_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app # Maps your Mac files to the container for hot-reloading
+    env_file:
+      - .env
+    environment:
+      # Crucial: Inside Docker, the API must connect to 'db', not 'localhost'
+      - POSTGRES_SERVER=db
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:15-alpine
+    container_name: jobtracker_postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
