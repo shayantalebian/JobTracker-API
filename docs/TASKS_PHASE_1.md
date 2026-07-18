@@ -6,24 +6,24 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 1 — Project Foundation
 
-- [ ] **Task 1.1:** Create the project structure (`app/`, `docs/`, `alembic/`, etc.).
-- [ ] **Task 1.2:** Initialize Git repository and create `.gitignore`.
-- [ ] **Task 1.3:** Create `README.md`, `ROADMAP.md`, `PHASES.md`, and `SYSTEM_DESIGN.md`.
-- [ ] **Task 1.4:** Initialize a Python 3.12 virtual environment using `uv`.
-- [ ] **Task 1.5:** Install FastAPI, SQLAlchemy, Alembic, Pydantic Settings, Uvicorn and required dependencies.
-- [ ] **Task 1.6:** Create a minimal FastAPI application (`app/main.py`) with a health check endpoint (`GET /`).
+- [✅] **Task 1.1:** Create the project structure (`app/`, `docs/`, `alembic/`, etc.).
+- [✅] **Task 1.2:** Initialize Git repository and create `.gitignore`.
+- [✅] **Task 1.3:** Create `README.md`, `ROADMAP.md`, `PHASES.md`, and `SYSTEM_DESIGN.md`.
+- [✅] **Task 1.4:** Initialize a Python 3.12 virtual environment using `uv`.
+- [✅] **Task 1.5:** Install FastAPI, SQLAlchemy, Alembic, Pydantic Settings, Uvicorn and required dependencies.
+- [✅] **Task 1.6:** Create a minimal FastAPI application (`app/main.py`) with a health check endpoint (`GET /`).
 
 ---
 
 ## Stage 2 — Docker Environment
 
-- [ ] **Task 2.1:** Create a `.env` file containing PostgreSQL credentials and application settings.
-- [ ] **Task 2.2:** Create `docker-compose.yml`.
-- [ ] **Task 2.3:** Add a PostgreSQL service with persistent Docker volumes.
-- [ ] **Task 2.4:** Configure exposed ports (`5432`).
-- [ ] **Task 2.5:** Verify PostgreSQL is running correctly using `docker compose up -d`.
-- [ ] **Task 2.6:** Connect to PostgreSQL using DBeaver or PgAdmin.
-- [ ] **Task 2.7:** Create a `.env.example` file for repository users.
+- [✅] **Task 2.1:** Create a `.env` file containing PostgreSQL credentials and application settings.
+- [✅] **Task 2.2:** Create `docker-compose.yml`.
+- [✅] **Task 2.3:** Add a PostgreSQL service with persistent Docker volumes.
+- [✅] **Task 2.4:** Configure exposed ports (`5433`).
+- [✅] **Task 2.5:** Verify PostgreSQL is running correctly using `docker compose up -d`.
+- [✅] **Task 2.6:** Connect to PostgreSQL using DBeaver or PgAdmin.
+- [✅] **Task 2.7:** Create a `.env.example` file for repository users.
 
 ---
 
@@ -167,3 +167,14 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 - [ ] Verify project works from a clean clone.
 - [ ] Update README screenshots.
 - [ ] Tag Release v0.1.0
+- [ ] pytest
+- [ ] httpx
+- [ ] Test database
+- [ ] Coverage
+
+## Stage 13 — CI/CD
+
+- [ ] GitHub Actions
+- [ ] Run Ruff
+- [ ] Run Tests
+- [ ] Build Docker
