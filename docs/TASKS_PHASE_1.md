@@ -85,21 +85,21 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Company Schemas
 
-- [ ] **Task 6.1:** CompanyCreate
-- [ ] **Task 6.2:** CompanyUpdate
-- [ ] **Task 6.3:** CompanyResponse
+- [✅] **Task 6.1:** CompanyCreate
+- [✅] **Task 6.2:** CompanyUpdate
+- [✅] **Task 6.3:** CompanyResponse
 
 ## Job Schemas
 
-- [ ] **Task 6.4:** JobCreate
-- [ ] **Task 6.5:** JobUpdate
-- [ ] **Task 6.6:** JobResponse
+- [✅] **Task 6.4:** JobCreate
+- [✅] **Task 6.5:** JobUpdate
+- [✅] **Task 6.6:** JobResponse
 
 ## Validation
 
-- [ ] **Task 6.7:** Validate URLs.
-- [ ] **Task 6.8:** Validate field lengths.
-- [ ] **Task 6.9:** Use Enum for application status.
+- [✅] **Task 6.7:** Validate URLs.
+- [✅] **Task 6.8:** Validate field lengths.
+- [✅] **Task 6.9:** Use Enum for application status.
 
 ---
 
@@ -107,13 +107,13 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Company Repository
 
-- [ ] **Task 7.1:** Create Company Repository.
-- [ ] **Task 7.2:** Create CRUD operations.
+- [✅] **Task 7.1:** Create Company Repository.
+- [✅] **Task 7.2:** Create CRUD operations.
 
 ## Job Repository
 
-- [ ] **Task 7.3:** Create Job Repository.
-- [ ] **Task 7.4:** Create CRUD operations.
+- [✅] **Task 7.3:** Create Job Repository.
+- [✅] **Task 7.4:** Create CRUD operations.
 
 ---
 
