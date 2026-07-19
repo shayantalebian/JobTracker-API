@@ -52,8 +52,8 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Company
 
-- [ ] **Task 5.1:** Create Company model.
-- [ ] **Task 5.2:** Add fields:
+- [✅] **Task 5.1:** Create Company model.
+- [✅] **Task 5.2:** Add fields:
   - id
   - name
   - website
@@ -62,8 +62,8 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Job Application
 
-- [ ] **Task 5.3:** Create JobApplication model.
-- [ ] **Task 5.4:** Add fields:
+- [✅] **Task 5.3:** Create JobApplication model.
+- [✅] **Task 5.4:** Add fields:
   - id
   - title
   - status
@@ -73,11 +73,11 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Relationships
 
-- [ ] **Task 5.5:** Configure One-to-Many relationship.
-- [ ] **Task 5.6:** Create `models/__init__.py`.
-- [ ] **Task 5.7:** Generate the first migration.
-- [ ] **Task 5.8:** Apply migration.
-- [ ] **Task 5.9:** Verify tables inside PostgreSQL.
+- [✅] **Task 5.5:** Configure One-to-Many relationship.
+- [✅] **Task 5.6:** Create `models/__init__.py`.
+- [✅] **Task 5.7:** Generate the first migration.
+- [✅] **Task 5.8:** Apply migration.
+- [✅] **Task 5.9:** Verify tables inside PostgreSQL.
 
 ---
 
