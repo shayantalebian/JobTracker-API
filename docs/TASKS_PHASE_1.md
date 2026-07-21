@@ -142,10 +142,10 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 10 — Error Handling
 
-- [ ] **Task 10.1:** Handle 404 errors.
-- [ ] **Task 10.2:** Handle duplicate companies.
-- [ ] **Task 10.3:** Create custom exceptions.
-- [ ] **Task 10.4:** Add global exception handlers.
+- [✅] **Task 10.1:** Handle 404 errors.
+- [✅] **Task 10.2:** Handle duplicate companies.
+- [✅] **Task 10.3:** Create custom exceptions.
+- [✅] **Task 10.4:** Add global exception handlers.
 
 ---
 

@@ -1,11 +1,14 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, status, Query  # noqa
+from app.core.exceptions import DuplicateResourceException
 from sqlalchemy.orm import Session
 from typing import List
 
 from app.api.dependencies import get_db
 from app.schemas.company import CompanyCreate, CompanyInDBBase, CompanyUpdate
 from app.repositories.company import company_repo
-from app.models.company import Company
+from app.models.company import Company  # noqa
+from app.core.exceptions import NotFoundException
+
 
 # Initialize the router with a prefix and tags for Swagger UI
 router = APIRouter(
@@ -16,23 +19,18 @@ router = APIRouter(
 
 @router.post("/", response_model=CompanyInDBBase, status_code=status.HTTP_201_CREATED)
 def create_company(company: CompanyCreate, db: Session = Depends(get_db)):
-    # 1. FIX: Query the 'Company' model directly
-    existing_company = db.query(Company).filter(
-        Company.name == company.name).first()
+    # 1. Use the repository to check for duplicates
+    existing_company = company_repo.get_by_name(db, name=company.name)
 
     if existing_company:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Company with this name already exists"
+        raise DuplicateResourceException(
+            resource_name="Company",
+            field_name="name",
+            field_value=company.name
         )
 
-    # 2. Create and save the new record
-    new_company = Company(**company.model_dump())
-    db.add(new_company)
-    db.commit()
-    db.refresh(new_company)
-
-    return new_company
+    # 2. Delegate creation to the repository
+    return company_repo.create(db, obj_in=company)
 
 
 @router.get("/", response_model=List[CompanyInDBBase])
@@ -69,10 +67,9 @@ def read_company(
     """
     company = company_repo.get(db, company_id)
     if not company:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Company not found"
-        )
+        raise NotFoundException(resource_name="Company",
+                                resource_id=company_id)
+
     return company
 
 
@@ -87,10 +84,8 @@ def update_company(
     """
     company = company_repo.get(db, company_id)
     if not company:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Company not found"
-        )
+        raise NotFoundException(resource_name="Company",
+                                resource_id=company_id)
 
     return company_repo.update(db, company, company_in)
 
@@ -102,7 +97,8 @@ def delete_company(company_id: int, db: Session = Depends(get_db)):
 
     # 2. Guard clause for 404
     if not company:
-        raise HTTPException(status_code=404, detail="Company not found")
+        raise NotFoundException(resource_name="Company",
+                                resource_id=company_id)
 
     # 3. Pass the actual object (not the integer ID!) to the repository
     # Note: Passed positionally to avoid keyword errors
