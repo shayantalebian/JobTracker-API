@@ -5,15 +5,12 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app # Maps your Mac files to the container for hot-reloading
+      - .:/app
     env_file:
       - .env
     environment:
-      # Crucial: Inside Docker, the API must connect to 'db', not 'localhost'
       - POSTGRES_SERVER=db
-    depends_on:
-      - db
-    restart: always
+      - POSTGRES_PORT=5432
 
   db:
     image: postgres:15-alpine
