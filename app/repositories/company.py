@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import asc, desc
 from app.models.company import Company
 from app.schemas.company import CompanyCreate, CompanyUpdate
 
@@ -9,9 +10,32 @@ class CompanyRepository:
         """Retrieve a single company by its ID."""
         return db.query(Company).filter(Company.id == company_id).first()
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Company]:
-        """Retrieve a list of companies with pagination."""
-        return db.query(Company).offset(skip).limit(limit).all()
+    def get_all(
+        self,
+        db: Session,
+        skip: int = 0,
+        limit: int = 100,
+        search: str | None = None,
+        sort_by: str = "id",
+        sort_desc: bool = False
+    ) -> list[Company]:
+        """Retrieve companies with pagination, filtering, and sorting."""
+        query = db.query(Company)
+
+        # 1. Filtering (Task 9.2) - Search by company name (case-insensitive)
+        if search:
+            query = query.filter(Company.name.ilike(f"%{search}%"))
+
+        # 2. Sorting (Task 9.3) - Dynamic column sorting
+        # Fallback to ID if invalid
+        sort_column = getattr(Company, sort_by, Company.id)
+        if sort_desc:
+            query = query.order_by(desc(sort_column))
+        else:
+            query = query.order_by(asc(sort_column))
+
+        # 3. Pagination (Task 9.1)
+        return query.offset(skip).limit(limit).all()
 
     def create(self, db: Session, company_in: CompanyCreate) -> Company:
         """Create a new company record."""

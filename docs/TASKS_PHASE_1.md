@@ -131,12 +131,12 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 9 — API Improvements
 
-- [ ] **Task 9.1:** Add pagination.
-- [ ] **Task 9.2:** Add filtering.
-- [ ] **Task 9.3:** Add sorting.
-- [ ] **Task 9.4:** Return proper HTTP status codes.
-- [ ] **Task 9.5:** Improve Swagger documentation.
-- [ ] **Task 9.6:** Add endpoint descriptions and examples.
+- [✅] **Task 9.1:** Add pagination.
+- [✅] **Task 9.2:** Add filtering.
+- [✅] **Task 9.3:** Add sorting.
+- [✅] **Task 9.4:** Return proper HTTP status codes.
+- [✅] **Task 9.5:** Improve Swagger documentation.
+- [✅] **Task 9.6:** Add endpoint descriptions and examples.
 
 ---
 

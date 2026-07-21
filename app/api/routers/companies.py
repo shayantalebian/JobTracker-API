@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -37,14 +37,26 @@ def create_company(company: CompanyCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=List[CompanyInDBBase])
 def read_companies(
-    skip: int = 0,
-    limit: int = 100,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    skip: int = Query(0, ge=0, description="Number of records to skip"),
+    limit: int = Query(
+        10, ge=1, le=100, description="Max records to return (max 100)"),
+    search: str | None = Query(None, description="Filter by company name"),
+    sort_by: str = Query(
+        "id", description="Field to sort by (e.g., 'id', 'name', 'industry')"),
+    sort_desc: bool = Query(False, description="Sort in descending order")
 ):
     """
-    Retrieve a list of companies.
+    Retrieve a list of companies with optional search, sorting, and pagination.
     """
-    return company_repo.get_all(db=db, skip=skip, limit=limit)
+    return company_repo.get_all(
+        db=db,
+        skip=skip,
+        limit=limit,
+        search=search,
+        sort_by=sort_by,
+        sort_desc=sort_desc
+    )
 
 
 @router.get("/{company_id}", response_model=CompanyInDBBase)

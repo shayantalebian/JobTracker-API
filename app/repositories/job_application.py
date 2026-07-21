@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import asc, desc
 from app.models.job_application import JobApplication
 from app.schemas.job_application import JobApplicationCreate, JobApplicationUpdate
 
@@ -13,9 +14,32 @@ class JobApplicationRepository:
         """Retrieve a single job application by its primary key ID."""
         return db.query(JobApplication).filter(JobApplication.id == job_id).first()
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[JobApplication]:
-        """Retrieve a list of job applications with pagination ($O(1)$ offset/limit query)."""
-        return db.query(JobApplication).offset(skip).limit(limit).all()
+    def get_all(
+        self,
+        db: Session,
+        skip: int = 0,
+        limit: int = 100,
+        status: str | None = None,
+        sort_by: str = "id",
+        sort_desc: bool = False
+    ) -> list[JobApplication]:
+        """Retrieve job applications with pagination, filtering, and sorting."""
+        query = db.query(JobApplication)
+
+        # 1. Filtering - Exact match for status (e.g., 'APPLIED', 'REJECTED')
+        if status:
+            query = query.filter(JobApplication.status == status)
+
+        # 2. Sorting - Dynamic column sorting
+        sort_column = getattr(JobApplication, sort_by,
+                              JobApplication.id)  # Fallback to ID
+        if sort_desc:
+            query = query.order_by(desc(sort_column))
+        else:
+            query = query.order_by(asc(sort_column))
+
+        # 3. Pagination
+        return query.offset(skip).limit(limit).all()
 
     def get_by_company_id(self, db: Session, company_id: int, skip: int = 0, limit: int = 100) -> list[JobApplication]:
         """Retrieve all job applications associated with a specific company ID."""

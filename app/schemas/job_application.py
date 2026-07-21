@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, HttpUrl, ConfigDict, field_validator
 from app.models.job_application import ApplicationStatus
+from typing import Optional
 
 
 class JobApplicationBase(BaseModel):
@@ -23,8 +24,24 @@ class JobApplicationBase(BaseModel):
         return str(v) if v else None
 
 
-class JobApplicationCreate(JobApplicationBase):
-    pass
+class JobApplicationCreate(BaseModel):
+    company_id: int
+    job_title: str = Field(...,
+                           description="The title of the position applied for")
+    status: str = Field(default="APPLIED",
+                        description="Current status of the application")
+    url: Optional[str] = Field(None, description="Link to the job posting")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "company_id": 1,
+                "job_title": "Backend Python Developer",
+                "status": "APPLIED",
+                "url": "https://linkedin.com/jobs/view/12345"
+            }
+        }
+    }
 
 
 class JobApplicationUpdate(JobApplicationBase):
