@@ -1,14 +1,26 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from app.api.routers import companies, job_applications
-from app.core import BaseAPIException
+from app.core.exceptions import BaseAPIException
+from app.core.logger import logger
+from contextlib import asynccontextmanager
 
+
+@asynccontextmanager
+async def app_lifespan(app: FastAPI):
+    # This block executes on startup
+    logger.info("JobTrackr API is starting up...")
+    yield
+    # This block executes on shutdown
+    logger.info("JobTrackr API is shutting down gracefully...")
 # Initialize the main FastAPI application
 app = FastAPI(
     title="JobTrackr API",
     description="A robust API for tracking job applications and managing company data.",
     version="1.0.0",
+    lifespan=app_lifespan,  # Attach the lifespan context manager here
 )
+
 
 # ---------------------------------------------------------
 # Router Registration
@@ -40,6 +52,7 @@ async def custom_api_exception_handler(request: Request, exc: BaseAPIException):
 
 @app.get("/", tags=["Root"])
 def read_root():
+    logger.info("Root endpoint accessed.")
     return {
         "message": "Welcome to JobTrackr API!",
         "status": "Healthy",
