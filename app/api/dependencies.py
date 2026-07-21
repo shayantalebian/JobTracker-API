@@ -4,11 +4,12 @@ from app.core.database import SessionLocal
 
 def get_db() -> Generator:
     """
-    Dependency that creates a new SQLAlchemy session per request
-    and ensures it is closed after the request is finished.
+    Creates a fresh database session for each request and closes it after the request is finished.
     """
     db = SessionLocal()
     try:
+        # Hand the session over to the endpoint
         yield db
     finally:
+        # Guarantee the session closes, even if the endpoint throws an error
         db.close()

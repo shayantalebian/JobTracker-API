@@ -1,27 +1,29 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy import text
-from sqlalchemy.orm import Session
-from app.api.dependencies import get_db
+from fastapi import FastAPI
+from app.api.routers import companies, job_applications
 
+# Initialize the main FastAPI application
 app = FastAPI(
     title="JobTrackr API",
-    description="A comprehensive backend API for tracking job applications and managing the job hunt process.",
+    description="A robust API for tracking job applications and managing company data.",
     version="1.0.0",
 )
 
+# ---------------------------------------------------------
+# Router Registration
+# ---------------------------------------------------------
+# We use a prefix (e.g., /api/v1) for API versioning.
+# This is a REST best practice so we can upgrade the API in
+# the future without breaking older clients.
+app.include_router(companies.router)
+app.include_router(job_applications.router)
 
-@app.get("/")
-def root():
-    return {"message": "Welcome to JobTrackr API!"}
+# A simple health-check/root endpoint
 
 
-@app.get("/db-health")
-def database_health_check(db: Session = Depends(get_db)):
-    """Test the database connection."""
-    try:
-        # Execute a simple query to test the connection
-        db.execute(text("SELECT 1"))
-        return {"status": "success", "message": "Database connection is fully operational!"}
-    except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Database connection failed: {str(e)}")
+@app.get("/", tags=["Root"])
+def read_root():
+    return {
+        "message": "Welcome to JobTrackr API!",
+        "status": "Healthy",
+        "version": "1.0.0"
+    }

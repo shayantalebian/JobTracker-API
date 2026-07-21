@@ -119,13 +119,13 @@ This document tracks the step-by-step implementation of **Phase 1 (Core Infrastr
 
 ## Stage 8 — API Layer
 
-- [ ] **Task 8.1:** Create database dependency (`get_db()`).
-- [ ] **Task 8.2:** Create Company router.
-- [ ] **Task 8.3:** Implement Company CRUD endpoints.
-- [ ] **Task 8.4:** Create Job router.
-- [ ] **Task 8.5:** Implement Job CRUD endpoints.
-- [ ] **Task 8.6:** Register all routers.
-- [ ] **Task 8.7:** Verify all endpoints in Swagger UI.
+- [✅] **Task 8.1:** Create database dependency (`get_db()`).
+- [✅] **Task 8.2:** Create Company router.
+- [✅] **Task 8.3:** Implement Company CRUD endpoints.
+- [✅] **Task 8.4:** Create Job router.
+- [✅] **Task 8.5:** Implement Job CRUD endpoints.
+- [✅] **Task 8.6:** Register all routers.
+- [✅] **Task 8.7:** Verify all endpoints in Swagger UI.
 
 ---
 
